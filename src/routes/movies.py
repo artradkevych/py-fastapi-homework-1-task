@@ -25,6 +25,9 @@ async def read_movies(
     if total_items <= 0:
         raise HTTPException(status_code=404, detail="No movies found.")
 
+    if page > total_pages:
+        raise HTTPException(status_code=404, detail="No movies found.")
+
     result = await db.execute(
         select(models.MovieModel)
         .offset(offset_value)
