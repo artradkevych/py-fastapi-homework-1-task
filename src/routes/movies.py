@@ -46,7 +46,7 @@ async def read_movies(
     }
 
 
-@router.get("/movies/{movie_id}", response_model=MovieDetailResponseSchema)
+@router.get("/movies/{movie_id}/", response_model=MovieDetailResponseSchema)
 async def read_single_movie(
     movie_id: int,
     db: AsyncSession = Depends(get_db),
